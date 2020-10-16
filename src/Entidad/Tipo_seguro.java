@@ -4,10 +4,10 @@ public class Tipo_seguro {
 	
 	private int id_tipo;
 	private String descripcion;
-	
+	private int contador = 0;
 	public Tipo_seguro(int id_tipo, String descripcion) {
 		
-		this.id_tipo = id_tipo;
+		this.id_tipo = contador++;
 		this.descripcion = descripcion;
 	}
 	
@@ -30,6 +30,5 @@ public class Tipo_seguro {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
+		
 }

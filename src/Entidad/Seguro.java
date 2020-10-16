@@ -4,7 +4,7 @@ public class Seguro {
 	
 	private int id_seguro;
 	private String descripcion;
-	private int id_tipo;
+	private Tipo_seguro tipo;
 	private Double costo_contratacion;
 	private Double costo_asegurado;
 	
@@ -12,7 +12,7 @@ public class Seguro {
 		super();
 		this.id_seguro = id_seguro;
 		this.descripcion = descripcion;
-		this.id_tipo = id_tipo;
+		this.tipo = new Tipo_seguro();
 		this.costo_contratacion = costo_contratacion;
 		this.costo_asegurado = costo_asegurado;
 	}
@@ -33,16 +33,25 @@ public class Seguro {
 		return descripcion;
 	}
 
-	public void setDescripcion(String descripcion) {
+	public  void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	public int getId_tipo() {
-		return id_tipo;
+
+	public int getTipoId() {
+		return tipo.getId();
+	}
+	
+	public String getTipoDescripcion() {
+		return tipo.getDescripcion();
+	}
+	
+	public Tipo_seguro getTipo() {
+		return tipo;
 	}
 
-	public void setId_tipo(int id_tipo) {
-		this.id_tipo = id_tipo;
+	public void setTipo(Tipo_seguro tipo) {
+		this.tipo = tipo;
 	}
 
 	public Double getCosto_contratacion() {
