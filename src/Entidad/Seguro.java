@@ -28,6 +28,10 @@ public class Seguro {
 	public void setId_seguro(int id_seguro) {
 		this.id_seguro = id_seguro;
 	}
+	
+	public void setTipoId(int idTipo) {
+		this.tipo.setId(idTipo);
+	}
 
 	public String getDescripcion() {
 		return descripcion;
@@ -41,7 +45,9 @@ public class Seguro {
 	public int getTipoId() {
 		return tipo.getId();
 	}
-	
+
+
+
 	public String getTipoDescripcion() {
 		return tipo.getDescripcion();
 	}

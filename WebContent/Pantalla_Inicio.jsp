@@ -9,8 +9,8 @@
 <body>
 	
 	<a href="Pantalla_Inicio.jsp"> Inicio </a>
-	<a href="Pantalla_agregar_seguro.jsp"> Agregar seguro </a>
-	<a href="Pantalla_listar_seguros.jsp"> Listar seguros </a>
+	<a href="servletsSeguro?Param1=1"> Agregar seguro </a>
+	<a href="servletsSeguro?Param2=2"> Listar seguros </a>
 	
 	<br><br>
 	<h2> <b> Soy la pagina inicio </b> </h2>
