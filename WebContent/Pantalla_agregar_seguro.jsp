@@ -16,15 +16,17 @@
 
 		    
 	<a href="Pantalla_Inicio.jsp"> Inicio </a>
-	<a href="Pantalla_agregar_seguro.jsp"> Agregar seguro </a>
-	<a href="Pantalla_listar_seguros.jsp"> Listar seguros </a>
+	<a href="servletsSeguro?Param1=1"> Agregar seguro </a>
+	<a href="servletsSeguro?Param2=2"> Listar seguros </a>
 	
 	<br><br>
 	<h2> <b> Agregar seguros </b> </h2>
 	<br><br>
 
 	<form action="servletsSeguro" method="get" >
-		
+				<%int id = 0; 
+		id = Integer.parseInt(request.getAttribute("id").toString());%>
+		Id: <%=id%><br>
 		
 		Descripcion <input type="text" name="txt_Descripcion" style="width: 171px; ">  <br>
 		
@@ -52,8 +54,6 @@
 		<input type="submit" value="Aceptar" name="btnAceptar">
 	
 
-
-
 	</form>
 <%
 	int filas=0;
@@ -66,6 +66,7 @@
 	{
 %>
 		Usuario agregado con Exito
-<%} %>
+<%}%>
+
 </body>
 </html>

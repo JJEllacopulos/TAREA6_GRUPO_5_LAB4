@@ -41,27 +41,23 @@ public class servletsSeguro extends HttpServlet {
 		
 		if(request.getParameter("Param1")!=null)
 		{
+			int id = 0;
+			Seguro seguro =new Seguro();
 			//Entra por haber echo click en el hyperlink mostrar usuarios
 		    DAO_seguro sdao = new DAO_seguro(); 
 		    ArrayList<Tipo_seguro> lista = sdao.obtenerTipoSeguro();
 			request.setAttribute("listaT", lista);
+			ArrayList<Seguro> listaSeguro = sdao.obtenerSeguros();
+			seguro =listaSeguro.get(listaSeguro.size() -1 );
+			id = seguro.getId_seguro()+1;
 			
+			request.setAttribute("id", id);
 			RequestDispatcher rd = request.getRequestDispatcher("/Pantalla_agregar_seguro.jsp");   
 	        rd.forward(request, response);
 			
 		}
 		
-		if(request.getParameter("btnFiltrar")!=null) {
-			//int id = Integer.parseInt(request.getParameter("ddl_tipo_seguro"));
-		    DAO_seguro sdao = new DAO_seguro(); 
-		    ArrayList<Tipo_seguro> lista = sdao.obtenerTipoSeguro();
-		    ArrayList<Seguro> listaSeguro = sdao.obtenerSegurosFiltrados(1);
-			request.setAttribute("listaT", lista);
-			request.setAttribute("listaSeguros", listaSeguro);
-			RequestDispatcher rd = request.getRequestDispatcher("/Pantalla_listar_seguros.jsp");   
-	        rd.forward(request, response);
-			
-		}
+
 		 if(request.getParameter("Param2")!=null)
 		{
 			//Entra por haber echo click en el hyperlink mostrar usuarios
@@ -75,11 +71,24 @@ public class servletsSeguro extends HttpServlet {
 	       
 			
 		}
+		 
+		if(request.getParameter("btnFiltrar")!=null) {
+				int id = Integer.parseInt(request.getParameter("ddl_tipo_seguro"));
+			    DAO_seguro sdao = new DAO_seguro(); 
+			    ArrayList<Tipo_seguro> lista = sdao.obtenerTipoSeguro();
+			    ArrayList<Seguro> listaSeguro = sdao.obtenerSegurosFiltrados(id);
+				request.setAttribute("listaT", lista);
+				request.setAttribute("listaSeguro", listaSeguro);
+				RequestDispatcher rd = request.getRequestDispatcher("/Pantalla_listar_seguros.jsp");   
+		        rd.forward(request, response);
+				
+			}		 
 		
 
 		
 		int idTipo;
 		Seguro seguro = new Seguro();
+		Seguro idSeguro = new Seguro();
 		DAO_seguro DaoSeguro = new DAO_seguro();
 		Tipo_seguro tipoS = new Tipo_seguro();
 		if(request.getParameter("btnAceptar")!=null)
@@ -92,6 +101,12 @@ public class servletsSeguro extends HttpServlet {
 		seguro.setCosto_contratacion(Double.parseDouble(request.getParameter("txt_cost_contratacion")));
 		
 		 int filas =DaoSeguro.agregarSeguro(seguro);
+			ArrayList<Seguro> listaSeguro = DaoSeguro.obtenerSeguros();
+			idSeguro =listaSeguro.get(listaSeguro.size() -1 );
+			int id = idSeguro.getId_seguro()+1;
+			ArrayList<Tipo_seguro> lista = DaoSeguro.obtenerTipoSeguro();
+			request.setAttribute("listaT", lista);
+			request.setAttribute("id", id);
 			//REQUESTDISPATCHER
 			request.setAttribute("cantFilas", filas);
 			RequestDispatcher rd = request.getRequestDispatcher("/Pantalla_agregar_seguro.jsp");   
@@ -111,6 +126,10 @@ public class servletsSeguro extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		
+		
+
 	}
 
 }

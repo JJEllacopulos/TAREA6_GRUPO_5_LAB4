@@ -41,12 +41,9 @@ public class Seguro {
 		this.descripcion = descripcion;
 	}
 
-
 	public int getTipoId() {
 		return tipo.getId();
 	}
-
-
 
 	public String getTipoDescripcion() {
 		return tipo.getDescripcion();
@@ -75,5 +72,14 @@ public class Seguro {
 	public void setCosto_asegurado(Double costo_asegurado) {
 		this.costo_asegurado = costo_asegurado;
 	}
+	public static boolean isNumeric(String cadena){
+		try {
+			Double.parseDouble(cadena);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}
+	}
+
 	
 }

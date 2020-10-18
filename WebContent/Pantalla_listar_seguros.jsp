@@ -14,20 +14,23 @@
 <body>
 	
 	<a href="Pantalla_Inicio.jsp"> Inicio </a>
-	<a href="Pantalla_agregar_seguro.jsp"> Agregar seguro </a>
-	<a href="Pantalla_listar_seguros.jsp"> Listar seguros </a>
+	<a href="servletsSeguro?Param1=1"> Agregar seguro </a>
+	<a href="servletsSeguro?Param2=2"> Listar seguros </a>
 	
 	<br><br>
 	<h2> <b> Tipo de seguros de la base de datos </b> </h2>
 	<br><br>
-
+	
+	<form action="servletsSeguro" method="get">
+	
 	<h3>Busqueda por tipo de seguros: </h3><select name = "ddl_tipo_seguro" style="width: 153px; ">
 
-	
+		
 	 <%
 		 	ArrayList<Tipo_seguro> listaTipo =  new ArrayList<Tipo_seguro>();
 		listaTipo = (ArrayList<Tipo_seguro>)request.getAttribute("listaT");
 		
+
 		 if(listaTipo!=null)
 		 for(Tipo_seguro e : listaTipo)
 		{
@@ -40,12 +43,14 @@
 		<%
 		ArrayList<Seguro> listaSeguro =  new ArrayList<Seguro>();
 		listaSeguro = (ArrayList<Seguro>)request.getAttribute("listaSeguro");
+		
+
 		%>
 		</select>
-		<form action="servletsSeguro" method="get">
-	<input type="submit" value="Filtrar" name="btnFiltrar">
-</form>
 
+<input type="submit" value="Filtrar" name="btnFiltrar">
+
+	</form>
 <table id="table_id" border="1" class="display">
     <thead>
         <tr>
@@ -78,6 +83,6 @@
     </tbody>
     
 </table>
-	
+
 </body>
 </html>
